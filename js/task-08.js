@@ -1,17 +1,13 @@
 const form = document.querySelector(".login-form");
-
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", sendTheForm);
+function sendTheForm(event) {
   event.preventDefault();
-
   const {
     elements: { email, password },
   } = event.currentTarget;
-  console.log("email:", email.value, "password:", password.value);
-});
-function validateForm() {
-  var x = document.querySelector(".login-form");
-  if (x == null || x == "") {
-    alert("Необходимо заполнить поле Имя!");
-    return false;
-  }
+  if (email.value === "" || password.value === "") {
+    return alert("Please fill in all the fields!");
+  } else
+    console.log({ email: `${email.value}`, password: `${password.value}` });
+  event.currentTarget.reset();
 }
