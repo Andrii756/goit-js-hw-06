@@ -13,9 +13,17 @@ const list = ingredients.reduce((str, item) => str + `<li>${item}</li>`, "");
 
 ulEl.innerHTML = list; */
 
-let ulList = document.getElementById("ingredients");
-const foodIngredients = ingredients.forEach((ingredient) => {
-  let items = document.createElement("li");
-  items.innerHTML = ingredient;
-  ulList.append(items);
-});
+const itemsList = document.querySelector("#ingredients");
+
+const getItems = (items) =>
+  items.map((item) => {
+    const itemEl = document.createElement("li");
+    itemEl.classList.add("item");
+    itemEl.textContent = item;
+    return itemEl;
+  });
+
+const ingredientsItems = getItems(ingredients);
+itemsList.append(...ingredientsItems);
+
+console.log(itemsList);
